@@ -125,10 +125,25 @@ var powerOfTwo = function(n) {
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+  if(string.length < 1){
+    return '';
+  } else {
+    var result = reverse(string.slice(1));
+    return result.concat(string[0]);
+  }
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  let string2 = string.toLowerCase();
+  if(string2.length < 1){
+    return true;
+  }
+  if(string2[0] !== string2[string2.length - 1]){
+    return false;
+  } else {
+    return palindrome(string2.slice(1, string2.length -1));
+  }
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
