@@ -180,6 +180,17 @@ var multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods to arrive at an approximate quotient (ignore decimal endings).
 var divide = function(x, y) {
+  if(y == 0){
+    return NaN;
+  } else if (x < 0){
+    return -divide(-x, y);
+  } else if (y < 0) {
+    return -divide(x, -y);
+  } else if (x < y){
+    return 0;
+  } else {
+    return 1 + divide(x-y, y);
+  }
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
@@ -188,6 +199,21 @@ var divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function(x, y) {
+  if(x<0 || y<0){
+    return null;
+  }
+  if(x == 0) {
+    return y;
+  } else if (y == 0){
+    return x;
+  }
+  else if (x>y) {
+    let remain = x%y;
+    return gcd(y, remain);
+  } else {
+    let remain = y%x;
+    return gcd(x, remain);
+  }
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
