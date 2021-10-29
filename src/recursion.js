@@ -394,17 +394,42 @@ var fibonacci = function(n) {
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 var nthFibo = function(n) {
+  if(n == 0){
+    return 0;
+  } else if (n < 0){
+    return null;
+  }
+  if(n == 1){
+    return 1;
+  } else {
+    let result = nthFibo(n-1) + nthFibo(n-2);
+    return result;
+  }
 };
 
 // 27. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
 var capitalizeWords = function(array) {
+  if(array.length < 1){
+    return [];
+  } else {
+    let result = capitalizeWords(array.slice(1));
+    result.unshift(array[0].toUpperCase());
+    return result;
+  }
 };
 
 // 28. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car','poop','banana']); // ['Car','Poop','Banana']
 var capitalizeFirst = function(array) {
+  if(array.length < 1){
+    return [];
+  } else {
+    let result = capitalizeFirst(array.slice(1));
+    result.unshift(array[0][0].toUpperCase().concat(array[0].slice(1)));
+    return result;
+  }
 };
 
 // 29. Return the sum of all even numbers in an object containing nested objects.
