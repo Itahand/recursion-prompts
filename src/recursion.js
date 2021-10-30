@@ -540,6 +540,10 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
+  if(array.length < 1){
+    return [];
+  }
+
 };
 
 // 36. Given a string, return a string with digits converted to their word equivalent.
@@ -560,12 +564,36 @@ var tagCount = function(tag, node) {
 // binarySearch(array, 5) // 5
 // https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search
 var binarySearch = function(array, target, min, max) {
+  if(array.length < 1){
+    return null;
+  } else if (min > max){
+    return null;
+  }
+  if(min === undefined){
+    min = 0;
+    max = array.length - 1;
+  }
+  let guess = Math.floor((max-min)/2) + min;
+
+     if (array[guess] > target){
+      return  binarySearch(array, target, min, guess -1);
+    } else if(array[guess] < target) {
+      return binarySearch(array, target, guess + 1, max);
+    } else {
+      return guess;
+    }
+
+
+
 };
 
 // 39. Write a merge sort function.
 // mergeSort([34,7,23,32,5,62]) // [5,7,23,32,34,62]
 // https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/divide-and-conquer-algorithms
 var mergeSort = function(array) {
+  if(array.length < 3){
+    return 
+  }
 };
 
 // 40. Deeply clone objects and arrays.
